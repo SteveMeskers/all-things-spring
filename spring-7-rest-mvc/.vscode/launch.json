@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Spring7RestMvcApplication<spring_7_rest_mvc>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "sm.springframework.spring_7_rest_mvc.Spring7RestMvcApplication",
+            "projectName": "spring_7_rest_mvc",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
