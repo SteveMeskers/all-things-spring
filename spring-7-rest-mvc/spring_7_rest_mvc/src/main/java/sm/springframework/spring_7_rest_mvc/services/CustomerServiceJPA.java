@@ -11,7 +11,6 @@ import org.springframework.util.StringUtils;
 
 import lombok.RequiredArgsConstructor;
 import sm.springframework.spring_7_rest_mvc.mappers.CustomerMapper;
-import sm.springframework.spring_7_rest_mvc.model.BeerDTO;
 import sm.springframework.spring_7_rest_mvc.model.CustomerDTO;
 import sm.springframework.spring_7_rest_mvc.repositories.CustomerRepository;
 
