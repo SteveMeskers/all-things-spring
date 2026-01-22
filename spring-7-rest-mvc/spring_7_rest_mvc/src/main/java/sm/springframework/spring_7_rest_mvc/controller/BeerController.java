@@ -10,7 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 import sm.springframework.spring_7_rest_mvc.model.BeerDTO;
 import sm.springframework.spring_7_rest_mvc.services.BeerService;
 
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,27 +33,27 @@ public class BeerController {
     private final BeerService beerService;
 
     @PatchMapping(BEER_PATH_ID)
-    public ResponseEntity<BeerDTO> patchBeerById(@PathVariable UUID beerId, @RequestBody BeerDTO beer) throws NotFoundException {
+    public ResponseEntity<BeerDTO> patchBeerById(@PathVariable UUID beerId, @RequestBody BeerDTO beer) throws NotFoundException2 {
         if (beerService.patchBeerById(beerId, beer).isEmpty()) {
-            throw new NotFoundException();
+            throw new NotFoundException2();
         }
         
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @DeleteMapping(BEER_PATH_ID)
-    public ResponseEntity<BeerDTO> deleteById(@PathVariable UUID beerId) throws NotFoundException {
+    public ResponseEntity<BeerDTO> deleteById(@PathVariable UUID beerId) throws NotFoundException2 {
         if (!beerService.deleteById(beerId)) {
-            throw new NotFoundException();
+            throw new NotFoundException2();
         }
         
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PutMapping(BEER_PATH_ID)
-    public ResponseEntity<BeerDTO> updateById(@PathVariable UUID beerId, @Validated @RequestBody BeerDTO beer) throws NotFoundException {
+    public ResponseEntity<BeerDTO> updateById(@PathVariable UUID beerId, @Validated @RequestBody BeerDTO beer) throws NotFoundException2 {
         if (beerService.updateBeerById(beerId, beer).isEmpty()) {
-            throw new NotFoundException();
+            throw new NotFoundException2();
         }
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
@@ -75,9 +74,9 @@ public class BeerController {
     }
 
     @GetMapping(value = BEER_PATH_ID)
-    public BeerDTO getBeerById(@PathVariable UUID beerId) throws NotFoundException {
+    public BeerDTO getBeerById(@PathVariable UUID beerId) throws NotFoundException2 {
         log.debug("Get beer by id in controller");
 
-        return beerService.getBeerById(beerId).orElseThrow(NotFoundException::new);
+        return beerService.getBeerById(beerId).orElseThrow(NotFoundException2::new);
     }
 }

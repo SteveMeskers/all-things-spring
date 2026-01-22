@@ -27,7 +27,15 @@ public class BeerRepositoryTest {
             .upc("123123123")
             .price(new BigDecimal("10.99"))
             .build());
-        beerRepository.flush();
+            beerRepository.flush();
+        });
+    }
+
+    @Test
+    void testSaveBeerMissing() {
+        assertThrows(ConstraintViolationException.class, () -> {
+            beerRepository.save(Beer.builder().build());
+            beerRepository.flush();
         });
     }
 
